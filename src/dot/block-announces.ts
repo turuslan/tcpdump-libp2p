@@ -39,4 +39,4 @@ export async function* blockAnnounces(conn: Conn) {
   });
   await expectEof1(conn[1]);
 }
-blockAnnounces.PROTOCOL = /^\/(dot)\/block-announces\/1$/;
+blockAnnounces.PROTOCOL = /^\/[^/]+\/block-announces\/1$/;

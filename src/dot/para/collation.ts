@@ -14,4 +14,4 @@ export async function* collation(conn: Conn) {
   yield* scaleFrames(conn[0], WireMessage(CollatorProtocolMessage));
   await expectEof1(conn[1]);
 }
-collation.PROTOCOL = "/polkadot/collation/1";
+collation.PROTOCOL = /^\/[^/]+\/collation\/1$/;

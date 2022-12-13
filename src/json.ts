@@ -2,6 +2,8 @@ import { Bits } from "./bits.ts";
 import { Bytes } from "./bytes.ts";
 import { CollatorId } from "./dot/para/CollatorId.ts";
 import { CollatorSignature } from "./dot/para/CollatorSignature.ts";
+import { VRFOutput } from "./dot/para/VRFOutput.ts";
+import { VRFProof } from "./dot/para/VRFProof.ts";
 import { Enum } from "./enum.ts";
 import { H256 } from "./h256.ts";
 import { PeerId } from "./PeerId.ts";
@@ -13,6 +15,8 @@ const S = {
   Bits,
   CollatorId,
   CollatorSignature,
+  VRFOutput,
+  VRFProof,
 };
 
 const K = "S";

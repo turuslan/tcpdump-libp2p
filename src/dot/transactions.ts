@@ -1,9 +1,11 @@
 import { expectEof1 } from "../drain.ts";
 import { Conn } from "../half.ts";
-import { scaleFrames, scaleHandshake } from "./scale.ts";
+import { Role } from "./Role.ts";
+import { Scale, scaleFrames, scaleHandshake } from "./scale.ts";
 
 export async function* transactions(conn: Conn) {
-  const h = await scaleHandshake(conn, () => {});
+  const handshake = (s: Scale) => s.a.length ? s.u8() as Role : null;
+  const h = await scaleHandshake(conn, handshake);
   if (h === null) {
     return;
   }
@@ -15,4 +17,4 @@ export async function* transactions(conn: Conn) {
   await expectEof1(conn[1]);
 }
 
-transactions.PROTOCOL = /^\/(dot)\/transactions\/1$/;
+transactions.PROTOCOL = /^\/[^/]+\/transactions\/1$/;

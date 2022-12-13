@@ -10,4 +10,4 @@ export async function reqCollation(conn: Conn) {
     CollationFetchingResponse,
   );
 }
-reqCollation.PROTOCOL = "/polkadot/req_collation/1";
+reqCollation.PROTOCOL = /^\/[^/]+\/req_collation\/1$/;

@@ -2,7 +2,7 @@ import {
   decodePlain,
   encodePlain,
 } from "https://deno.land/x/base58check@v0.1.4/mod.ts";
-import { startsWith } from "https://deno.land/std@0.153.0/bytes/mod.ts";
+import { startsWith } from "https://deno.land/std@0.167.0/bytes/mod.ts";
 
 const PUBKEY = Uint8Array.of(0x08, 0x01, 0x12, 0x20);
 const PEERID = Uint8Array.of(0x00, 0x24);
@@ -37,6 +37,9 @@ export class PeerId {
     return this.s;
   }
   [Symbol.for("Deno.customInspect")]() {
+    return this.D;
+  }
+  get D() {
     return `PeerId(${this.s})`;
   }
 }

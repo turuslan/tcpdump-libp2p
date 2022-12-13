@@ -37,12 +37,13 @@ function Peer(pb: Pb1): Peer {
 
 interface Record {
   key: Bytes;
-  value: Bytes;
+  value: Bytes | null;
 }
 function Record(pb: Pb1): Record {
   return pb.m.map({
     key: [1, "1", (x) => new Bytes(x.b)],
-    value: [2, "1", (x) => new Bytes(x.b)],
+    value: [2, "?", (x) => new Bytes(x.b)],
+    _5: [5, "?", (x) => new Bytes(x.b)],
     _666: [666, "?", (x) => new Bytes(x.b)],
     _777: [777, "?", (x) => x.i],
   });
@@ -59,7 +60,7 @@ function Message(pb: Pb1): Message {
   return pb.m.map({
     type: [1, "?", (x) => x.i],
     key: [2, "?", (x) => new Bytes(x.b)],
-    record: [3, "?", (x) => Record(x)],
+    record: [3, "?", Record],
     _10: [10, "?", (x) => x.i],
     closer: [8, "N", Peer],
     provider: [9, "N", Peer],

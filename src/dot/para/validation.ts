@@ -11,7 +11,8 @@ export async function* validation(conn: Conn) {
   if (h === null) {
     return;
   }
+  if (h[0] !== 4 || h[1] !== 4) return;
   yield* scaleFrames(conn[0], WireMessage(ValidationProtocol));
   await expectEof1(conn[1]);
 }
-validation.PROTOCOL = "/polkadot/validation/1";
+validation.PROTOCOL = /^\/[^/]+\/validation\/1$/;

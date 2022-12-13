@@ -1,7 +1,7 @@
 import {
   Deferred,
   deferred,
-} from "https://deno.land/std@0.153.0/async/deferred.ts";
+} from "https://deno.land/std@0.167.0/async/deferred.ts";
 
 export class HalfBuf {
   buffers: [time: number, buf: Uint8Array][] = [];

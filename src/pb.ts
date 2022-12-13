@@ -56,7 +56,7 @@ export class Pb {
   one(i: number): Pb1 {
     const l = this.m.get(i);
     if (l?.length !== 1) {
-      throw new Error(`${i}`);
+      throw new Error(`${i} ${l?.length ?? 0}`);
     }
     return l[0];
   }

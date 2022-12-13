@@ -1,5 +1,5 @@
-import { equals } from "https://deno.land/std@0.153.0/bytes/equals.ts";
-import { BufReader } from "https://deno.land/std@0.153.0/io/mod.ts";
+import { equals } from "https://deno.land/std@0.167.0/bytes/equals.ts";
+import { BufReader } from "https://deno.land/std@0.167.0/io/mod.ts";
 import { Conn } from "./half.ts";
 import { OnConn } from "./log.ts";
 import { multiselect } from "./multiselect.ts";

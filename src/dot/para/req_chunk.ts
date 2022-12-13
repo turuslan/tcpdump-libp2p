@@ -10,4 +10,4 @@ export async function reqChunk(conn: Conn) {
     ChunkFetchingResponse,
   );
 }
-reqChunk.PROTOCOL = "/polkadot/req_chunk/1";
+reqChunk.PROTOCOL = /^\/[^/]+\/req_chunk\/1$/;

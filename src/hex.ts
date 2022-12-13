@@ -1,4 +1,4 @@
-import * as HEX from "https://deno.land/std@0.153.0/encoding/hex.ts";
+import * as HEX from "https://deno.land/std@0.167.0/encoding/hex.ts";
 import { fromUtf, toUtf } from "./utf.ts";
 
 export function toHex(a: Uint8Array) {

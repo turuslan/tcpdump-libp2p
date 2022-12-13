@@ -1,4 +1,4 @@
-import { equals } from "https://deno.land/std@0.153.0/bytes/mod.ts";
+import { equals } from "https://deno.land/std@0.167.0/bytes/mod.ts";
 import { Conn, HalfConn } from "./half.ts";
 import { PeerId } from "./PeerId.ts";
 

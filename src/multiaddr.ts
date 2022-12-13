@@ -1,5 +1,5 @@
 import { decode32 } from "https://deno.land/x/varint@v2.0.0/varint.ts";
-import { startsWith } from "https://deno.land/std@0.153.0/bytes/mod.ts";
+import { startsWith } from "https://deno.land/std@0.167.0/bytes/mod.ts";
 import { PeerId } from "./PeerId.ts";
 
 enum Code {

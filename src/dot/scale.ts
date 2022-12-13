@@ -24,6 +24,9 @@ export class Scale {
     }
     return this.a[this.o];
   }
+  endf<T>(f: (s: Scale) => T) {
+    return this.end(f(this));
+  }
   end<T>(t: T) {
     if (this.o < this.a.length) {
       throw new Error();
@@ -59,6 +62,16 @@ export class Scale {
   u32() {
     return this.d.getUint32(this._n(4), true);
   }
+  _u64() {
+    return this.d.getBigUint64(this._n(8), true);
+  }
+  u64() {
+    const x = this._u64();
+    if (x > U) {
+      throw new Error(`${x}`);
+    }
+    return Number(x);
+  }
   h256() {
     return new H256(this._blob(32));
   }
@@ -66,7 +79,8 @@ export class Scale {
     return new Bytes(this._bytes());
   }
   bits() {
-    return new Bits(this._blob((this.u() + 7) >> 3));
+    const n = this.u();
+    return new Bits(n, this._blob((n + 7) >> 3));
   }
   list<T>(f: () => T) {
     const n = this.u();
@@ -119,8 +133,7 @@ export class Scale {
 }
 
 function _frame<T>(a: Uint8Array, f: (s: Scale) => T) {
-  const s = new Scale(a);
-  return s.end(f(s));
+  return new Scale(a).endf(f);
 }
 
 export async function scaleFrame<T>(
